@@ -1,0 +1,26 @@
+<div class="">
+  <h2 class="text-center text-3xl font-bold text-magenta-400">CREANDO CUENTA</h2>
+  <form class="mt-3 gap-2" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <label class="input w-full">
+      <img class="h-[1.4em] opacity-50" src="icons/user-rounded-svgrepo-com.svg">
+      <input type="text" formControlName="name" required placeholder="Nombre"/>
+    </label>
+    <label class="input w-full">
+      <img class="h-[1.4em] opacity-50" src="icons/user-rounded-svgrepo-com.svg">
+      <input type="text" required placeholder="Apellido" formControlName="surname"/>
+    </label>
+    <label class="input w-full">
+      <img class="h-[1.4em] opacity-50" src="icons/phone-svgrepo-com.svg">
+      <input type="text" required placeholder="Número" formControlName="phone"/>
+    </label>
+    <label class="input w-full">
+      <img class="h-[1.4em] opacity-50" src="icons/mention-square-svgrepo-com.svg">
+      <input type="email" required placeholder="Correo" formControlName="email"/>
+    </label>
+    <label class="input w-full">
+      <img class="h-[1.4em] opacity-50" src="icons/key-svgrepo-com.svg">
+      <input type="password" required placeholder="Contraseña" formControlName="password"/>
+    </label>
+    <button class="btn btn-secondary mt-3 w-full" type="submit">REGISTRAR</button>
+  </form>
+</div>
