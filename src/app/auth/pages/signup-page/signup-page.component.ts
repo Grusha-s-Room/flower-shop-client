@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 
 @Component({
@@ -14,6 +14,7 @@ export class SignupPageComponent {
   authService = inject( AuthService );
   fb = inject( FormBuilder );
   hasError = signal( false );
+  router = inject( Router );
 
   signupForm = this.fb.group ({
     name : ['',[Validators.required]],
@@ -36,7 +37,7 @@ export class SignupPageComponent {
     const newUser : User = {
       name,
       surname,
-      phone,
+      phone : '+52' + phone,
       email,
       password
     }
@@ -44,6 +45,7 @@ export class SignupPageComponent {
     this.authService.signUp( newUser ).subscribe({
       next: ( response ) => {
         console.log('Respuesta del servidor.', response );
+        this.router.navigateByUrl('/login');
       },
       error: ( error ) => {
         console.error('Error al enviar el POST: ', error);
